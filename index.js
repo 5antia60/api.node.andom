@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 const ocurrencesRoutes = require('./routes/ocurrences.routes');
+const countOcurrencesRoutes = require('./routes/count-ocurrences.routes');
 
 //#endregion
 
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/ocurrences', ocurrencesRoutes);
+app.use('/count-ocurrences', countOcurrencesRoutes);
 
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD);
