@@ -20,11 +20,10 @@ const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD);
 const url = `mongodb+srv://${ DB_USER }:${ DB_PASSWORD }@apicluster.y3xzl.mongodb.net/andonDb?retryWrites=true&w=majority`;
 
-mongoose.connect(url)
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.listen(process.env.PORT || 3000)
+mongoose.connect(url).then(r => app.listen(process.env.PORT || 3000))
+
