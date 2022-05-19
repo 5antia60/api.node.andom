@@ -16,8 +16,9 @@ app.use('/ocurrences', ocurrencesRoutes);
 app.use('/count-ocurrences', countOcurrencesRoutes);
 
 mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlPareser: true,
+  useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 app.use(cors());
