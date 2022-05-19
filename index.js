@@ -21,5 +21,5 @@ const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD);
 const url = `mongodb+srv://${ DB_USER }:${ DB_PASSWORD }@apicluster.y3xzl.mongodb.net/andonDb?retryWrites=true&w=majority`;
 
 mongoose.connect(url)
-  .then(() => app.listen(3000))
+  .then(() => app.listen(process.env.PORT || 3000))
   .catch((err) => console.log(err))
