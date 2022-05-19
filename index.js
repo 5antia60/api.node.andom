@@ -15,15 +15,14 @@ const countOcurrencesRoutes = require('./routes/count-ocurrences.routes');
 app.use('/ocurrences', ocurrencesRoutes);
 app.use('/count-ocurrences', countOcurrencesRoutes);
 
-
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD);
-const url = `mongodb+srv://${ DB_USER }:${ DB_PASSWORD }@apicluster.y3xzl.mongodb.net/andonDb?retryWrites=true&w=majority`;
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlPareser: true,
+});
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-mongoose.connect(url).then(r => app.listen(process.env.PORT || 3000))
+app.listen(process.env.PORT || 3000)
 
