@@ -22,7 +22,6 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan('dev'));
 
 app.listen(process.env.PORT || 3000)
 
