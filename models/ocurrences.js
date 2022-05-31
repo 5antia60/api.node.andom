@@ -8,6 +8,7 @@ const Ocurrences = mongoose.model('Ocurrences', {
   description: String,
   suggestions: String,
   sector: String,
+  status: String,
 });
 
 module.exports = Ocurrences;

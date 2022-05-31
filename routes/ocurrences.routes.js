@@ -5,14 +5,14 @@ const Ocurrences = require('../models/ocurrences');
  * Postar nova ocorrência
  */
 router.post('/', async (req, res) => {
-  const { userName, type, date, title, description, suggestions, sector } = req.body;
+  const { userName, type, date, title, description, suggestions, sector, status } = req.body;
 
-  if (!userName || !type || !date || !title || !description || !suggestions || !sector) {
+  if (!userName || !type || !date || !title || !description || !suggestions || !sector || !status) {
     res.status(422).json({ Erro: 'Preencha todos os campos...' });
     return;
   }
 
-  const newOcurrence = { userName, type, date, title, description, suggestions, sector };
+  const newOcurrence = { userName, type, date, title, description, suggestions, sector, status };
 
   try {
     await Ocurrences.create(newOcurrence)
@@ -59,9 +59,9 @@ router.get('/:id', async (req, res) => {
  * Atualizar ocorrência
  */
 router.patch('/:id', async (req, res) => {
-  const { userName, type, date, title, description, suggestions, sector } = req.body;
+  const { userName, type, date, title, description, suggestions, sector, status } = req.body;
 
-  const ocurrence = { userName, type, date, title, description, suggestions, sector };
+  const ocurrence = { userName, type, date, title, description, suggestions, sector, status };
 
   try {
     const updatedOcurrence = await Ocurrences.updateOne({ _id: req.params.id }, ocurrence);
