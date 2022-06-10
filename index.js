@@ -19,6 +19,7 @@ app.use(cors());
 app.use(bodyParser.json())
 app.use('/ocurrences', ocurrencesRoutes);
 app.use('/count-ocurrences', countOcurrencesRoutes);
+app.get('/', (req, res) => res.send('API Online!'));
 
 //#endregion
 
@@ -37,5 +38,5 @@ mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true,
 });
 
-app.listen(process.env.PORT || 4000)
+app.listen(process.env.PORT || 3000)
 
